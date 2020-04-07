@@ -38,7 +38,7 @@ export default function Home() {
             <Text style={styles.title}>eu só trabalho com nomes</Text>
             <Text style={styles.subtitle}>fala ai, quem são os players?</Text>
             <NameInput onPress={() => handleNewPlayer('Pedro')} />
-            <Text style={styles.listTitle}>são esses os jogadores?</Text>
+            <Text style={styles.listTitle}> são esses os jogadores?</Text>
             <FlatList
                 style={styles.playersList}
                 data={playerList}

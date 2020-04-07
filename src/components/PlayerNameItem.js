@@ -29,7 +29,7 @@ const styles = StyleSheet.create({
     },
     title: {
         color: "#efefef",
-        fontWeight: "500",
+        fontFamily: 'Roboto-Medium',
         fontSize: 18,
         paddingStart: 16,
     },

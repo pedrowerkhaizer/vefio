@@ -14,13 +14,14 @@ export default StyleSheet.create({
         marginLeft: -14,
     },
     title: {
-        fontWeight: "bold",
+        fontFamily: 'Roboto-Bold',
         fontSize: 24,
         lineHeight: 28,
         color: '#fff',
         marginTop: 46,
     },
     subtitle: {
+        fontFamily: 'Roboto-Regular',
         fontSize: 16,
         lineHeight: 18,
         color: '#fff',
@@ -29,8 +30,8 @@ export default StyleSheet.create({
     listTitle: {
         color: '#fff',
         fontSize: 24,
-        fontWeight: "bold",
         marginTop: 24,
+        fontFamily: 'Roboto-Bold'
     },
     playersList: {
         flexGrow: 0,
