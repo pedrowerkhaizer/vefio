@@ -20,6 +20,10 @@ export default function Category() {
         navigation.goBack()
     };
 
+    function navigateToPlayerWheel() {
+        navigation.navigate('PlayerWheel');
+    };
+
     function handleSliderChange(value) {
         value <= 0.2 ? firstCategory()
             : value <= 0.4 ? secondCategory()
@@ -79,7 +83,7 @@ export default function Category() {
                 />
                 <Text style={styles.paragraph}>{paragraph}</Text>
             </View>
-            <RedButton style={{}} title="tá, bora" />
+            <RedButton onPress={navigateToPlayerWheel} title="tá, bora" />
 
 
         </LinearGradient>
