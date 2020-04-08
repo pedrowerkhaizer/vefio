@@ -78,8 +78,9 @@ export default function Category() {
                     onValueChange={value => handleSliderChange(value)}
                 />
                 <Text style={styles.paragraph}>{paragraph}</Text>
-                <RedButton title="tá, bora" />
             </View>
+            <RedButton style={{}} title="tá, bora" />
+
 
         </LinearGradient>
     );

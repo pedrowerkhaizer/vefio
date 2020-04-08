@@ -9,10 +9,10 @@ export default StyleSheet.create({
         paddingTop: Constants.statusBarHeight + 20,
     },
     contentContainer: {
-        flex: 1,
         width: '100%',
+        minHeight: 260,
+        marginTop: '40%',
         alignItems: "center",
-        justifyContent: "center",
     },
     categoryTitle: {
         fontSize: 24,
