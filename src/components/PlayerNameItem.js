@@ -6,7 +6,7 @@ import { Feather } from '@expo/vector-icons';
 export default function PlayerNameItem(props) {
     return (
         <View style={styles.container}>
-            <Text style={styles.title} >{props.id}. {props.name}</Text>
+            <Text style={styles.title} >{props.name}</Text>
             <TouchableOpacity style={styles.buttonContainer}
                 onPress={props.onPress}>
                 <Feather name="trash-2" size={24} color="white" />

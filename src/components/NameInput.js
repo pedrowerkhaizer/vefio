@@ -9,6 +9,7 @@ export default function NameInput(props) {
                 style={styles.playerNameInput}
                 placeholder='nome do jogador'
                 placeholderTextColor='#e8e8e8'
+                value={props.value}
                 autoCapitalize="none"
                 autoCorrect={false}
                 onChangeText={props.onChangeText}

@@ -1,5 +1,5 @@
 import React, { useState, Component } from 'react';
-import { Image, Text, FlatList } from 'react-native';
+import { Image, Text, FlatList, Alert } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import { useNavigation } from '@react-navigation/native';
 
@@ -12,19 +12,34 @@ import logoImg from '../../assets/logo-white.png';
 
 export default function Home() {
     const [playerList, setPlayerList] = useState([]);
+    const [inputPlayer, setInputPlayer] = useState('');
+    const [count, setCount] = useState(1);
     const navigation = useNavigation();
-
 
     function navigateToCategory() {
         navigation.navigate('Category');
     };
 
-    function handleNewPlayer(name) {
-        setPlayerList([...playerList, { id: (playerList.length + 1), nome: name }]);
+    function handleSubmit() {
+        if (playerList.length > 1) {
+            navigateToCategory();
+        }
+        else {
+            Alert.alert('parado, mãos pro alto', 'me ajuda ai pô, preciso saber o nome dos jogadores');
+        }
     }
 
-    function handleSubmit() {
-        navigateToCategory();
+    function addNewPlayer() {
+        if (inputPlayer !== "") {
+            setCount(count + 1);
+            setPlayerList([...playerList, {
+                id: count,
+                nome: inputPlayer
+            }]);
+            setInputPlayer('');
+        } else {
+            Alert.alert('ei você', 'tu tem que digitar um nome pra adicionar ele né, no minímo: zé ninguém');
+        };
     }
 
     function deletePlayer(id) {
@@ -37,7 +52,10 @@ export default function Home() {
             <Image style={styles.header} source={logoImg} />
             <Text style={styles.title}>eu só trabalho com nomes</Text>
             <Text style={styles.subtitle}>fala ai, quem são os players?</Text>
-            <NameInput onPress={() => handleNewPlayer('Pedro')} />
+            <NameInput value={inputPlayer}
+                onChangeText={name => setInputPlayer(name)}
+                onPress={addNewPlayer}
+            />
             <Text style={styles.listTitle}> são esses os jogadores?</Text>
             <FlatList
                 style={styles.playersList}
