@@ -10,7 +10,8 @@ export default function NameInput(props) {
                 placeholder='nome do jogador'
                 placeholderTextColor='#e8e8e8'
                 value={props.value}
-                autoCapitalize="none"
+                autoCapitalize="words"
+                maxLength={25}
                 autoCorrect={false}
                 onChangeText={props.onChangeText}
             />
@@ -43,6 +44,7 @@ const styles = StyleSheet.create({
         elevation: 2,
     },
     playerNameInput: {
+        width: '80%',
         height: 40,
         fontFamily: 'Roboto-Regular',
         fontSize: 18,

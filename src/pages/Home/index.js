@@ -1,5 +1,5 @@
-import React, { useState, Component } from 'react';
-import { Image, Text, FlatList, Alert } from 'react-native';
+import React, { useState, useEffect } from 'react';
+import { Image, Text, FlatList, Alert, AsyncStorage } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import { useNavigation } from '@react-navigation/native';
 
@@ -17,16 +17,37 @@ export default function Home() {
     const navigation = useNavigation();
 
     function navigateToCategory() {
-        navigation.navigate('Category');
+        const _storeData = async () => {
+            try {
+                await AsyncStorage.setItem('playerList', JSON.stringify(playerList));
+                navigation.navigate('Category');
+                console.clear()
+                console.log(playerList)
+            } catch (error) {
+                // Error saving data
+                alert(error)
+            }
+        };
+        _storeData();
     };
 
-    function handleSubmit() {
-        if (playerList.length > 1) {
-            navigateToCategory();
+    const _retrieveData = async () => {
+        try {
+            const value = JSON.parse(await AsyncStorage.getItem('playerList'));
+            if (value !== null) {
+                setPlayerList([...playerList, ...value])
+                // We have data!!
+                console.log(value);
+            }
+        } catch (error) {
+            console.log(error);
         }
-        else {
-            Alert.alert('parado, mãos pro alto', 'me ajuda ai pô, preciso saber o nome dos jogadores');
-        }
+    };
+
+    async function handleSubmit() {
+        playerList.length > 1
+            ? navigateToCategory()
+            : Alert.alert('parado, mãos pro alto', 'me ajuda ai pô, preciso saber o nome dos jogadores');
     }
 
     function addNewPlayer() {
@@ -45,6 +66,10 @@ export default function Home() {
     function deletePlayer(id) {
         setPlayerList(playerList.filter(player => player.id !== id));
     }
+
+    useEffect(() => {
+        _retrieveData();
+    }, [])
     return (
         <LinearGradient
             colors={['#022859', '#011F32']}

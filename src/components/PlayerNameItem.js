@@ -17,7 +17,7 @@ export default function PlayerNameItem(props) {
 
 const styles = StyleSheet.create({
     container: {
-        width: '100%',
+        overflow: "scroll",
         height: 36,
         marginTop: 16,
         minWidth: 200,
@@ -28,6 +28,9 @@ const styles = StyleSheet.create({
         justifyContent: "space-between"
     },
     title: {
+        width: '80%',
+        height: 36,
+        textAlignVertical: "center",
         color: "#efefef",
         fontFamily: 'Roboto-Medium',
         fontSize: 18,
